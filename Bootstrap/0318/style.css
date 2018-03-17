@@ -1,0 +1,11 @@
+/* startup css */
+html, body {
+	height: 100%;
+}
+
+#cover {
+	background: #222 url("image/wallpaper.png");
+	-webkit-background-size: cover;
+	background-size: cover;
+	height: 100%;
+}
