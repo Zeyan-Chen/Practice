@@ -1,11 +1,29 @@
-/* startup css */
-html, body {
-	height: 100%;
+/* style css */
+
+html,
+body {
+    height: 100%;
 }
 
+
+/* cover */
+
 #cover {
-	background: #222 url("image/wallpaper.png");
-	-webkit-background-size: cover;
-	background-size: cover;
-	height: 100%;
+    background: #222 url("image/wallpaper.jpg") center center;
+    -webkit-background-size: cover;
+    background-size: cover;
+    height: 100%;
+    color: white;
+    display: -webkit-flex;
+    display: -moz-flex;
+    display: -ms-flex;
+    display: -o-flex;
+    display: flex;
+    -ms-align-items: center;
+    align-items: center;
+    text-align: center;
+}
+
+#cover-caption {
+    width: 100%;
 }
