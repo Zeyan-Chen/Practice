@@ -1,0 +1,60 @@
+/* style css */
+
+html,
+body {
+    height: 100%;
+}
+
+img {
+    max-width: 100%;
+}
+/* cover */
+
+#cover {
+    background: #222 url("image/coffee-bg-top.jpg") center center;
+    -webkit-background-size: cover;
+    background-size: cover;
+    height: 100%;
+    color: #fff;
+    display: -webkit-flex;
+    display: -moz-flex;
+    display: -ms-flex;
+    display: -o-flex;
+    display: flex;
+    -ms-align-items: center;
+    align-items: center;
+    text-align: center;
+    background-color: #fff;
+}
+
+.contentStyle {
+    background-color: rgba(100, 100, 100, .3);
+    padding: 20px;
+}
+
+#cover-caption {
+    width: 100%;
+}
+
+.section-content {
+    padding: 5rem 0;
+}
+
+#about {
+    background: url("image/coffee-aboutme-bg.jpg") center center no-repeat;
+    -webkit-background-size: cover;
+    background-size: cover;
+}
+
+.about-text {
+    background: rgba(0,0,0,.8);
+    color: #fff;
+    padding: 30px;
+}
+
+#footer-main {
+    background: #222;
+    color: #fff;
+    font-size: 0.8rem;
+    padding: 2.5rem;
+}
