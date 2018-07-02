@@ -2,9 +2,6 @@
 $width: 100%
 $buttonNumber: 6
 
-
-
-
 // font var
 $baseSize: 12px
 $baseLineSize: 10px
@@ -36,7 +33,8 @@ $paddingLevel: 1.2
 
 @function rhythm($size) 
 	@return ceil($size * $paddingLevel / $baseLineSize) * $baseLineSize
-	// ceil(16px * 1.2 / 10px)
+	// ceil(16px * 1.2 / 10px) * 10px = 20px
+	// ceil 就是無條件進位 >> ceil(2.0) = 2 >> ceil(2.1) = 3 >> ceil(2.6) = 3
 
 @function line($count: 1, $baseLineHeight: 10px)
 	@return $baseLineHeight * $count
@@ -52,10 +50,8 @@ $paddingLevel: 1.2
 	@else
 		line-height: $line-height
 
-
 // font-size: 20px
 // line-height: 2 => 40px
-
 
 html
 		margin: 0
