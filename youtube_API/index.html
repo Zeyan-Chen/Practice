@@ -3,6 +3,7 @@
 
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <title>Document</title>
     <link rel="stylesheet" type="text/css" href="bootstrap.min.css">
     <style type="text/css">
@@ -25,8 +26,9 @@
     }
 	
 	#listSong {
-		overflow: auto;
+		overflow-y: auto;
 		flex-grow: 1; /* 自動幫你算高 */
+        -webkit-overflow-scrolling: touch;
 	}
     </style>
 </head>
@@ -34,7 +36,7 @@
 <body>
     <div class="container d-flex flex-column" style="height: 100vh;">
         <!-- logo -->
-        <img src="1024px-Logo_of_YouTube_(2015-2017).svg.png" class="mx-auto d-block youtube-logo m-3">
+        <img src="logo.png" class="mx-auto d-block youtube-logo m-3">
         <!-- iframe -->
         <section id="video"></section>
         <!-- mylist -->
@@ -84,10 +86,10 @@
 
 	            $('#listSong').append(
 					`<div class="row mb-3 bg-light shadow rounded item" data-key="${vid}">
-						<div class="video-img col-12 col-md-3 p-3 m-auto">
+						<div class="video-img col-md-3 p-3 m-auto">
 							<img src="${thumb}" class="img-thumbnail">
 						</div>
-						<div class="p-3 col-12 col-md-9 m-auto">
+						<div class="p-3 col-md-9 m-auto">
 							<h5>${title}</h5>
 							<p class="text-muted">${desc}</p>
 						</div>
