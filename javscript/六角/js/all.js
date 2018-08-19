@@ -193,28 +193,28 @@
 //   break;
 // }
 
-var movies = [
-  {
-    name: "寶貝老闆",
-    type: "喜劇"
-  },
-  {
-    name: "目擊者",
-    type: "驚悚"
-  },
-  {
-    name: "玩命關頭8",
-    type: "動作"
-  },
-  {
-    name: "玩命關頭8",
-    type: "動作"
-  },
-  {
-    name: "玩命關頭8",
-    type: "動作"
-  }
-];
+// var movies = [
+//   {
+//     name: "寶貝老闆",
+//     type: "喜劇"
+//   },
+//   {
+//     name: "目擊者",
+//     type: "驚悚"
+//   },
+//   {
+//     name: "玩命關頭8",
+//     type: "動作"
+//   },
+//   {
+//     name: "玩命關頭8",
+//     type: "動作"
+//   },
+//   {
+//     name: "玩命關頭8",
+//     type: "動作"
+//   }
+// ];
 
 // var total = 0;
 // for (let i = 0; i < movies.length; i++) {
@@ -251,32 +251,231 @@ var movies = [
 // el.innerHTML = name;
 
 // 利用 createElement 方式
-let el = document.querySelector('.list');
-for (let i = 0; i < movies.length; i++) {
-  let str = document.createElement('li');
-  el.appendChild(str); 
-}
+// let el = document.querySelector('.list');
+// for (let i = 0; i < movies.length; i++) {
+//   let str = document.createElement('li');
+//   el.appendChild(str); 
+// }
 
-let elLi = document.querySelectorAll('.list li');
-for (let i = 0; i < movies.length; i++) {
-  let str = document.createElement('a');
-  str.setAttribute('href', 'www.youtube.com'); // 加屬性
-  str.textContent = movies[i].name; // 加內容
-  console.log(i)
-  elLi[i].appendChild(str);
-}
-console.log(document.querySelectorAll('.list li a')[0].getAttribute('href')) // 抓屬性
+// let elLi = document.querySelectorAll('.list li');
+// for (let i = 0; i < movies.length; i++) {
+//   let str = document.createElement('a');
+//   str.setAttribute('href', 'www.youtube.com'); // 加屬性
+//   str.textContent = movies[i].name; // 加內容
+//   console.log(i)
+//   elLi[i].appendChild(str);
+// }
+// console.log(document.querySelectorAll('.list li a')[0].getAttribute('href')) // 抓屬性
 
 
 /* ==== 冒泡事件 */
-var elBody = document.querySelector('.body');
-elBody.addEventListener('click', function (params) {
-  alert('body')
-}, false); // 如果是 false 就是由內元素往外找，true 相反，預設 false
+// var elBody = document.querySelector('.body');
+// elBody.addEventListener('click', function (e) {
+//   e.stopPropagation();
+//   // alert('body')
+// }, false); // 如果是 false 就是由內元素往外找，true 相反，預設 false
 
-var elBtn = document.querySelector('button');
-elBtn.addEventListener('click', function (params) {
-  alert('Btn')
-}, false) // 如果是 false 就是由內元素往外找，true 相反，預設 false
+// var elBtn = document.querySelector('button');
+// elBtn.addEventListener('click', function (e) {
+//   e.stopPropagation();
+//   console.log(e.target.nodeName) // 確認點到什麼 tag
+// }, false) // 如果是 false 就是由內元素往外找，true 相反，預設 false
 
 
+// var movies = [
+//   {
+//     name: "寶貝老闆",
+//     type: "喜劇",
+//     year: "2016",
+//   },
+//   {
+//     name: "目擊者",
+//     type: "驚悚",
+//     year: "2017",
+//   },
+//   {
+//     name: "玩命關頭8",
+//     type: "動作",
+//     year: "2016",
+//   },
+//   {
+//     name: "與神同行2",
+//     type: "動作",
+//     year: "2018",
+//   },
+//   {
+//     name: "巨齒鯊",
+//     type: "動作",
+//     year: "2018"
+//   }
+// ];
+
+// let send = document.querySelector('#send');
+// let areaId = document.querySelector('#areaId');
+// let list = document.querySelector('.list');
+// // send.addEventListener('click', function (e) {
+// //   console.log(areaId.value)
+// // });
+
+// areaId.addEventListener('change', function (params) {
+//   list.innerHTML = '';
+//   for (let i = 0; i < movies.length; i++) {
+//     if (movies[i].year == this.value) {
+//       let tagLi = document.createElement('li');
+//       tagLi.textContent = movies[i].name;
+//       list.appendChild(tagLi);
+//     }
+//   }
+// });
+
+// var elBody = document.querySelector('body');
+
+// function goRocket(e) {
+//   console.log(e.keyCode);
+//   switch (e.keyCode) {
+//     case 49:
+//       document.querySelector('.rocket-1').style.bottom = '2000px';
+//       break;
+//     case 50:
+//       document.querySelector('.rocket-2').style.bottom = '2000px';
+//       break;
+//     case 51:
+//       document.querySelector('.rocket-3').style.bottom = '2000px';
+//       break;
+//     case 32:
+//       let rocketAll = document.querySelectorAll('.rocket');
+//       for (let i = 0; i < rocketAll.length; i++) {
+//         rocketAll[i].style.bottom = '2000px';
+//       }
+//       break;
+
+//     default:
+//       break;
+//   }
+// }
+
+// elBody.addEventListener('keydown', goRocket);
+
+/* ==== blur */
+// function checkValue(e) {
+//   console.log(e.target.value)
+//   if (e.target.value == '') {
+//     alert('填一下吧')
+//   }
+// }
+
+// var elHamNum = document.querySelector('#hamNum');
+// elHamNum.addEventListener('blur', checkValue); // 失焦時
+
+/* ==== mousemove */
+// function touch(params) {
+//   alert('碰啥小')
+// }
+
+// var el = document.querySelector('.box');
+// el.addEventListener('mousemove', touch)
+
+/* ==== screen page client 差異 */
+// var elScreen = document.querySelector('.screen');
+// var elPage = document.querySelector('.page');
+// var elClient = document.querySelector('.client');
+
+// function checkScreen(e) {
+//   console.log(window.innerWidth, e.clientX)
+//   if (window.innerWidth < e.clientX) {
+//     alert('超過啥小')
+//   }
+//   elScreen.textContent = `screenX：${e.screenX} screenY：${e.screenY} `;
+// }
+
+// var boxMove = document.querySelector('.mouse');
+// function mousePosition(e) {
+//   // console.log(e)
+//   boxMove.style.left = (e.clientX - 50) + 'px';
+//   boxMove.style.top = (e.clientY - 50) + 'px';
+// }
+
+// function obstaclePosition(e) {
+//   console.log('你輸了')
+// }
+
+// var elBody = document.querySelector('body');
+// var elObstacle = document.querySelector('.obstacle');
+// elBody.addEventListener('mousemove', mousePosition);
+// elObstacle.addEventListener('mousemove', obstaclePosition)
+
+/* ==== 父元素監聽 差異 */
+// function checkNode(e) {
+//   console.log(e.target.nodeName)
+//   if(e.target.nodeName !== 'LI') {
+//     alert('沒點到li')
+//   }
+// }
+
+// var elList = document.querySelector('.list');
+// elList.addEventListener('click', checkNode);
+
+
+
+var btn = document.querySelector('#getName');
+var outPut = document.querySelector('#outPutName');
+
+function getNameF(e) {
+  var str = document.querySelector('#myName').value;
+  localStorage.setItem("myName", str);
+}
+function outPutNameF(e) {
+  alert(localStorage.getItem('myName'));
+}
+
+
+btn.addEventListener('click', getNameF);
+outPut.addEventListener('click', outPutNameF);
+
+var movies = [
+  {
+    name: "寶貝老闆",
+    type: "喜劇"
+  },
+  {
+    name: "目擊者",
+    type: "驚悚"
+  },
+  {
+    name: "玩命關頭8",
+    type: "動作"
+  },
+  {
+    name: "玩命關頭8",
+    type: "動作"
+  },
+  {
+    name: "玩命關頭8",
+    type: "動作"
+  }
+];
+
+moviesString = JSON.stringify(movies); // JSON 字串化，因為存localStorge存進去一定要是字串
+localStorage.setItem('movies', moviesString);
+
+var getData = localStorage.getItem('movies');
+var getDataAry = JSON.parse(localStorage.getItem('movies')); // 字串化的字串，轉成 Array
+
+for (let i = 0; i < getDataAry.length; i++) {
+  console.log(getDataAry[i].name)
+}
+// var moviesLen = localStorage.getItem(movies);
+// for (let i = 0; i < array.length; i++) {
+//   const element = array[i];
+  
+// }
+// console.log(localStorage.getItem(movies))
+var listLi = document.querySelectorAll('.list li');
+
+function getDataSet(e) {
+  console.log(e.target.dataset.num);
+}
+
+for (let i = 0; i < listLi.length; i++) {
+  listLi[i].addEventListener('click', getDataSet)
+}
