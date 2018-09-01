@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>Document</title>
+    <link rel="stylesheet" type="text/css" href="bootstrap.min.css">
+    <style type="text/css">
+    /** { outline: 1px solid #f00; }*/
+
+    .youtube-logo {
+        width: 100px;
+    }
+
+    .video-img img {
+        width: 100%;
+    }
+
+    iframe {
+        width: 100%;
+    }
+
+   	body {
+    	height: 100vh;
+    }
+	
+	#listSong {
+		overflow-y: auto;
+		flex-grow: 1; /* 自動幫你算高 */
+        -webkit-overflow-scrolling: touch;
+	}
+    </style>
+</head>
+
+<body>
+    <div class="container d-flex flex-column" style="height: 100vh;">
+        <!-- logo -->
+        <img src="logo.png" class="mx-auto d-block youtube-logo m-3">
+        <!-- iframe -->
+        <section id="video"></section>
+        <!-- mylist -->
+        <div id="listSong" class="container pl-4 pr-4"></div>
+    </div>
+    <script type="text/javascript" src="jquery-3.3.1.min.js"></script>
+    <script type="text/javascript">
+    $(function() {
+        var key = 'AIzaSyC0psqQpzJWeKLkSglTQmQc40jgPQzqwzY'; // youtube api 金鑰
+        var playlistId = 'PLw3jDbuj27Z3wwKOBmAa1wi3N6EmRcMrh'; // 頻道ID
+        var URL = 'https://www.googleapis.com/youtube/v3/playlistItems'; // GET
+
+        // 物件，如 load 時發生 400 錯誤訊息，對一下屬性 key 是否正確
+        var options = {
+            part: 'snippet',
+            key: key,
+            maxResults: 20,
+            playlistId: playlistId
+        }
+
+        loadVids();
+
+        function loadVids() {
+            $.getJSON(URL, options, function(data) {
+                // console.log(data);
+                var id = data.items[0].snippet.resourceId.videoId;
+                // for(var i=0; i>=data.)
+                mainVid(id);
+                resultLoop(data);
+            })
+        }
+
+        // iframe video
+        function mainVid(id) {
+            $('#video').html(`<iframe width="560" height="315" src="https://www.youtube.com/embed/${id}" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>`);
+        }
+
+        // which song that you wanna ?
+        function resultLoop(data) {
+        	// i = 數量, item = data.items
+        	$.each(data.items, function(i, item){
+	        	var thumb = item.snippet.thumbnails.medium.url,
+	        		title = item.snippet.title,
+	        		channelTitle = item.snippet.channelTitle,
+	        		desc = item.snippet.description.substring(0, 100),
+	        		vid = item.snippet.resourceId.videoId;
+
+	            $('#listSong').append(
+					`<div class="row mb-3 bg-light shadow rounded item" data-key="${vid}">
+						<div class="video-img col-md-3 p-3 m-auto">
+							<img src="${thumb}" class="img-thumbnail">
+						</div>
+						<div class="p-3 col-md-9 m-auto">
+							<h5>${title}</h5>
+							<p class="text-muted">${desc}</p>
+						</div>
+					</div>`
+	            );
+        	});
+        }
+
+        // append 過來進來的東西 click 會沒作用
+        $('#listSong').on('click', '.item', function(){
+        	var id = $(this).attr('data-key');
+        	mainVid(id);
+        })
+    });
+    </script>
+</body>
+
+</html>

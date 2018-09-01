@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      /* cursor: none; */
+    }
+
+    body {
+      height: 5000px;
+      background-color: red;
+      
+    }
+
+    .rocket-group {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      margin: auto;
+      width: 500px;
+      display: flex;
+      justify-content: space-around;
+    }
+
+    .rocket {
+      transition: all 1s ease-out;
+      width: 100px;
+      height: 100px;
+      background-color: red;
+      position: relative;
+      bottom: 0;
+    }
+
+    .box {
+      width: 150px;
+      height: 150px;
+      background-color: red;
+    }
+
+    .mouse {
+      position: fixed;
+      width: 100px;
+      height: 100px;
+      background-color: black;
+      z-index: 1;
+    }
+    .obstacle {
+      position: absolute;
+      top: 500px;
+      left: 1000px;
+      width: 600px;
+      height: 1000px;
+      background-color: #fff;
+    }
+    .list {
+      padding: 200px;
+      background-color: #fff;
+    }
+    .list li {
+      padding: 50px;
+      outline: 1px solid blue;
+    }
+  </style>
+</head>
+
+<body>
+  <!-- 課程1 -->
+  <!-- <p>紅豆餅：
+    <em id="price"></em>
+  </p>
+  <p>我口袋有：
+    <em id="myPacket"></em>
+  </p>
+  <p>乾！但是我買的話就剩下：
+    <em id="leave"></em>
+  </p>
+  <p>又想買
+    <em id="howMany"></em>個
+  </p>
+  <p>
+    又要花<em id="total"></em>啦
+  </p> -->
+
+  <!-- 課程2 -->
+  <!-- <p>服務生：請問你要啥？</p>
+  <p> 漢堡寶：
+    <input id="hamNum" type="text">可樂：
+    <input id="cokeNum" type="text">
+  </p>
+  <p>
+    <button id="calculate">通通給我算起來</button> 總共：
+    <input id="total" type="text">
+  </p> -->
+
+  <!-- 課程4 -->
+  <!-- <p>你是本月壽星嗎?</p>
+  <p>顧客：<em id="birthdayId"></em></p>    
+  <p>請問那個人還沒到齊對吧？</p> 
+  <p>顧客：<em id="peopleId"></em></p> -->
+
+  <!-- 自己練 -->
+  <!-- <label for="trainer">訓練家</label>
+  <input type="text" id="trainer">
+  <br>
+  <label for="pokemon">寶可夢</label>
+  <input type="text" id="pokemon">
+  <br>
+  <label for="friend">朋友</label>
+  <input type="text" id="friend">
+  <br>
+  <label for="team">團隊</label>
+  <input type="text" id="team">
+  <br>
+  <label for="howMany">抓幾隻</label>
+  <input type="text" id="howMany">
+  <br>
+  <button type="submit" id="send">送出資料</button>
+ -->
+  <!-- <h1>電影列表</h1>
+  <select name="" id="areaId">
+    <option value=""></option>
+    <option value="2018">2018</option>
+    <option value="2017">2017</option>
+    <option value="2016">2016</option>
+  </select> -->
+  <ul class="list">
+    <li data-num="小火龍">小智</li>
+    <li data-num="拉達">小茂</li>
+    <li data-num="小結石">小剛</li>
+  </ul>
+
+  <!-- <button id="send">安安點</button> -->
+  <!-- <div class="rocket-group">
+    <div class="rocket rocket-1"></div>
+    <div class="rocket rocket-2"></div>
+    <div class="rocket rocket-3"></div>
+  </div> -->
+
+  <!-- <div class="div zeyan">
+    <a href="#" target="_blank">google</a>
+  </div>
+  <div class="div zeyan">123</div> -->
+
+  <!-- <div class="box"></div> -->
+  <!-- <div class="screen"></div>
+  <div class="page"></div>
+  <div class="client"></div>
+  <div class="mouse"></div>
+  <div class="obstacle"></div> -->
+  <input type="text" id="myName">
+  <button id="getName">送出</button>
+  <button id="outPutName">剛剛的名字</button>
+  <script src="js/all.js"></script>
+</body>
+
+</html>
