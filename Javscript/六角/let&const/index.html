@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <style>
+    ul {
+      width: 500px;
+    }
+
+    ul::after {
+      content: '';
+      display: block;
+      clear: both;
+    }
+
+    li {
+      box-sizing: border-box;
+      float: left;
+      width: calc(100% / 2);
+      border: 1px solid red;
+      margin-left: -1px;
+      margin-top: -1px;
+      text-align: center;
+      list-style-type: none;
+    }
+
+    .col-1 {
+      width: calc(100% / 1);
+    }
+
+    .col-2 {
+      width: calc(100% / 2);
+    }
+
+    .col-3 {
+      width: calc(100% / 3);
+    }
+  </style>
+</head>
+
+<body>
+  <ul>
+
+    <li class="col-2">
+      <span>12</span>
+    </li>
+    <li class="col-2">
+      <span>12</span>
+    </li>
+    <li class="col-2">
+      <span>12</span>
+    </li>
+    <li class="col-2">
+      <span>12</span>
+    </li>
+    <li class="col-2">
+      <span>12</span>
+    </li>
+    <li class="col-2">
+      <span>12</span>
+    </li>
+    <li class="col-2">
+      <span>12</span>
+    </li>
+    <li class="col-2">
+      <span>12</span>
+    </li>
+    <li class="col-2">
+      <span>12</span>
+    </li>
+    <li class="col-2">
+      <span>12</span>
+    </li>
+  </ul>
+  <script>
+    // 特性
+    // let 和 const
+    // 不能重複命名
+    // 會向上提升
+    // 不會繼承到 window
+
+    const spanList = document.querySelectorAll('span');
+
+    for (let i = 0; i < spanList.length; i++) {
+      spanList[i].addEventListener('click', function (e) {
+        // e.stopPropagation()
+        // e.preventDefault()
+        // console.log(e.target)
+      })
+    }
+
+    const liList = document.querySelectorAll('ul li');
+    // 如果用 var 的話 i 就 = window 的全域變數用 let 的話大括弧裡的 i 就區域變數
+    for (let i = 0; i < liList.length; i++) {
+      liList[i].addEventListener('click', function (e) {
+        console.log(e.currentTarget)
+        // alert(i + 1)
+      }, false)
+    }
+
+    const obj = {
+      url: 'test.yahoo.com.tw'
+    }
+    Object.freeze(obj); // 凍結裡面的物件不被修改
+    obj.url = 'x'; // 明明用了 const 為什麼會被修改呢 {} [] 裡面 const 是沒有用的 ? 用 freeze 語法就可以凍結 {} [] 不被修改
+    console.log(obj.url);
+
+  </script>
+</body>
+
+</html>
