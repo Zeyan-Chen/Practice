@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+
+<body>
+  帳號：
+  <input type="text" class="account">
+  <br> 密碼：
+  <input type="password" class="password">
+  <br>
+  <input type="button" class="send" value="送出">
+  <script type="text/javascript">
+    let send = document.querySelector('.send');
+    send.addEventListener('click', signUp)
+
+    function signUp(params) {
+      let emailStr = document.querySelector('.account').value;
+      let passwordStr = document.querySelector('.password').value;
+      let account = {};
+      account.email = emailStr;
+      account.password = passwordStr;
+      console.log(account);
+
+      let xhr = new XMLHttpRequest();
+      xhr.open('post', 'https://hexschool-tutorial.herokuapp.com/api/signup', true);
+      xhr.setRequestHeader('Content-type', 'application/json');
+      let data = JSON.stringify(account);
+      xhr.send(data);
+      xhr.onload = function (params) {
+        console.log(xhr)
+        let callBackData = JSON.parse(xhr.responseText); // 把 json 格式轉成正常格式
+        console.log(callBackData)
+        callBackData.message == '帳號註冊成功' ? alert('帳號註冊成功') : alert(callBackData.message);
+      }
+    }
+  </script>
+</body>
+
+</html>
