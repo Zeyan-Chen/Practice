@@ -50,19 +50,9 @@ function checkStatus() {
     console.log(statusNow);
     if (statusNow == 'left') {
         index++;
-        elSliderUl.classList.add('animation');
-
-        setTimeout(function() {
-            document
-                .querySelector('#slider ul')
-                .appendChild(document.querySelectorAll('#slider li')[0]);
-            elSliderUl.classList.remove('animation');
-            // elSliderUl.style.left = null;
-        }, 1000);
-
-        // if (index > elSliderLi.length - 1) {
-        //     index = 0;
-        // }
+        if (index > elSliderLi.length - 1) {
+            index = 0;
+        }
     } else if (statusNow == 'right') {
         index--;
         document
@@ -74,13 +64,12 @@ function checkStatus() {
             index = elSliderLi.length - 1;
         }
     }
-    // elSliderUl.style.left = `-${100 * index}%`;
+    elSliderUl.style.left = `-${100 * index}%`;
 }
 
 swipe.prototype = {
     styleTransition: (elSliderUl.style.transition = 'all .4s ease'),
-    styleMarginLeft: (elSliderUl.style.marginLeft = -100 + '%'),
-    // styleLeft: (elSliderUl.style.left = 0),
+    styleLeft: (elSliderUl.style.left = 0),
     nowStatus: function(params) {
         return statusNow;
     }
