@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        #map {
+            width: 100%;
+            height: 500px;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="map"></div>
+    <script>
+        function initMap() {
+            let options = {
+                zoom: 16, // 攝影機
+                center: { lat: 25.093494, lng: 121.519867 } // 士林
+            }
+
+            // 創一個 google 地圖
+            // let map = new google.maps.Map(document.querySelector('#map'), options)
+
+            // // 地點浮標
+            // let marker = new google.maps.Marker({ position: { lat: 25.089213, lng: 121.524384 }, map: map }) // 士林夜市
+
+            // // 地點內容
+            // let infoWindow = new google.maps.InfoWindow({ content: '<h1>士林夜市</h1>' });
+
+            // // google map 不能用 addEventListener
+            // marker.addListener('click', function (params) {
+            //     infoWindow.open(map, marker)
+            // })
+
+
+            // ---------------------------- 上面是練習用
+
+
+            // ------------- 動態加入標籤
+            let map = new google.maps.Map(document.querySelector('#map'), options); // 創一個地圖
+            // 新增標籤
+            function addMarker(props) {
+                let marker = new google.maps.Marker({
+                    position: props.local, // 那個地方的經緯度
+                    map: map, // 你要存放的地圖
+                    animation: google.maps.Animation.DROP, // icon 跳跳的動畫
+                    // icon:  // 地標圖
+                });
+            }
+
+            // 當點擊地圖時，新增一個地標
+            google.maps.event.addListener(map, 'click', function (event) {
+                // alert('lat: ' + event.latLng.lat(), event.latLng.lng()) // 抓到經緯度
+                let markers = [
+                    // { local: { lat: 25.089213, lng: 121.524384 }, icon: 'xxx.jpg' },
+                    // .. 可以續加下去
+                ];
+                markers.push({ local: { lat: event.latLng.lat(), lng: event.latLng.lng() } }); // 灌入陣列
+                addMarker(markers[0]); // 每點擊一次就新增地標
+            })
+
+        }
+    </script>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyC_8VoJfgMk7xHdqLwxtwL9X5G-5UH3WKk&callback=initMap" async
+        defer></script>
+</body>
+
+</html>
