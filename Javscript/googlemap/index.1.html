@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        #map {
+            width: 100%;
+            height: 500px;
+        }
+
+        .list {
+            list-style-type: none;
+            display: flex;
+        }
+
+        .list li {
+            margin-right: 15px;
+        }
+
+        .list li:hover {
+            background-color: #000;
+            color: white;
+            cursor: pointer;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="map"></div>
+    <ul class="list">
+        <li>士林-B&Q</li>
+        <li>士林-北士商</li>
+        <li>士林-士林站</li>
+    </ul>
+    <script>
+        function initMap() {
+            let options = {
+                zoom: 16, // 攝影機
+                center: { lat: 25.093494, lng: 121.519867 } // 士林
+            }
+
+            // ------------- 動態加入標籤
+            let map = new google.maps.Map(document.querySelector('#map'), options); // 創一個地圖
+
+            let markers = [
+                { local: { lat: 25.094720, lng: 121.515914 }, animation: false },
+                { local: { lat: 25.092991, lng: 121.520323 }, animation: false },
+                { local: { lat: 25.093661, lng: 121.526010 }, animation: false }
+            ]
+
+            let markerArr = [];
+            for (let i = 0; i < markers.length; i++) {
+
+                markerArr.push(createMarker(markers[i]))
+
+            }
+
+            // 新增標籤
+            function createMarker(props) {
+                let marker = new google.maps.Marker({
+                    position: props.local, // 那個地方的經緯度
+                    map: map, // 你要存放的地圖
+                    animation: google.maps.Animation.DROP, // icon 跳跳的動畫
+                    // icon:  // 地標圖
+                });
+                if (props.animation) {
+                    marker.setAnimation(google.maps.Animation.BOUNCE);
+                }
+                return marker;
+            }
+
+
+
+            let elList = document.querySelectorAll('.list li');
+            for (let i = 0; i < elList.length; i++) {
+                elList[i].addEventListener('click', function () {
+                    markerArr[i].setAnimation(google.maps.Animation.BOUNCE);
+                })
+            }
+        }
+
+    </script>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyC_8VoJfgMk7xHdqLwxtwL9X5G-5UH3WKk&callback=initMap"
+        async defer></script>
+</body>
+
+</html>
